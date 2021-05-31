@@ -8,18 +8,41 @@
     </head>
 
     <body>
+        <!-- Weather App -->
         <header>
 
         </header>
 
         <main>
+            <!-- Sidebar -->
             <div>
-
+                <!-- Search by Input -->
+                <div class="card">
+                    <h3 class="card-header text-uppercase">Search for a City</h3>
+                    <form id="user-form" class="card-body">
+                        <input name="city" id="city-input" type="text" autofocus="true" class="form-input" placeholder="Toronto" />
+                        <button type="submit" class="btn">Search</button>
+                    </form>
+                </div>
+                  
+                
+                <!-- Search by topic -->
+                <div class="card">
+                    <h3 class="card-header text-uppercase">Search By Topic</h3>
+                    <div id="city-buttons" class="card-body">
+                        <!-- Dynamically create buttons -->
+                        <!-- <button data-language="javascript" class="btn">JavaScript</button>
+                        <button data-language="html" class="btn">HTML</button>
+                        <button data-language="css" class="btn">CSS</button> -->
+                </div>
             </div>
-
+            <!-- Results Body -->
             <div>
-
+                <h2 class="subtitle">Showing Weather for: <span id="weather-search-term"></span></h2>
+                <div id="weather-container" class="list-group"></div>
+                <div id="5-day-container"></div>
             </div>
         </main>
+        <script src="script.js"></script>
     </body>
 </html>
