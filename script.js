@@ -10,6 +10,7 @@ var fiveDayContainerEl = document.querySelector('#five-day-container');
 var apiKey = "c19e4da08eb6aeec142736a2f4693638"
 var currentData
 var fiveDayData
+var coord
 
 function formSubmitHandler(event) {
     event.preventDefault();
@@ -29,6 +30,8 @@ function getWeatherData(city) {
         .then(function (response) {
             response.json().then(function (data) {
                 currentData = data.main
+                coord = data.coord
+                getForecastData(coord.lat,coord.lon)
             })
         })
         .catch(function (error) {
@@ -51,5 +54,8 @@ function getForecastData(lat, lon) {
         })
 }
 
-// userFormEl.addEventListener('submit', formSubmitHandler);
+// CREATE CARDS
+
+
+userFormEl.addEventListener('submit', formSubmitHandler);
 // cityButtonsEl.addEventListener('click', buttonClickHandler);
