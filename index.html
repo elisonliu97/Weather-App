@@ -4,18 +4,21 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+        <link rel="stylesheet" href="style.css" />
         <title>Weather App</title>
     </head>
 
     <body>
         <!-- Weather App -->
-        <header>
+        <header class="hero">
+            <h1 class="app-title"> Weather App</h1>
+          </header>
 
-        </header>
-
-        <main>
+        <main class="flex-row justify-space-between">
             <!-- Sidebar -->
-            <div>
+            <div class="col-12 col-md-4">
                 <!-- Search by Input -->
                 <div class="card">
                     <h3 class="card-header text-uppercase">Search for a City</h3>
@@ -36,8 +39,9 @@
                         <button data-language="css" class="btn">CSS</button> -->
                 </div>
             </div>
+        </div>
             <!-- Results Body -->
-            <div>
+            <div class="col-12 col-md-8">
                 <h2 class="subtitle">Showing Weather for: <span id="weather-search-term"></span></h2>
                 <div id="weather-container" class="list-group"></div>
                 <div id="five-day-container"></div>
