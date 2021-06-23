@@ -143,5 +143,25 @@ function display5day() {
     }
 }
 
+function getSavedCities() {
+    var keys = Object.keys(localStorage)
+    for (var i = 0; i < keys.length; i++) {
+        var cityCard = document.createElement('button')
+        cityCard.textContent = keys[i]
+        cityCard.setAttribute('class', 'btn')
+        cityCard.setAttribute('data-city', keys[i])
+        cityButtonsEl.append(cityCard)
+    }
+}
+
+function buttonClickHandler(event) {
+    event.preventDefault();
+
+    cityName = event.target.getAttribute('data-city')
+
+    getWeatherData(cityName)
+}
+
+getSavedCities();
 userFormEl.addEventListener('submit', formSubmitHandler);
 cityButtonsEl.addEventListener('click', buttonClickHandler);
