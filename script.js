@@ -16,10 +16,12 @@ var fiveDayData;
 var coord;
 var cityName;
 
+// function to handle when form is submitted
 function formSubmitHandler(event) {
     event.preventDefault();
 
     cityName = cityInputEl.value.trim();
+    // saves city name into local storage if not already in
     localStorage.setItem(cityName, cityName);
     if (!cityName) {
         return;
@@ -28,9 +30,12 @@ function formSubmitHandler(event) {
     getWeatherData(cityName)
 }
 
+// function to display weather data
 function getWeatherData(city) {
+    // clear existing data
     weatherContainerEl.remove();
     fiveDayContainerEl.remove();
+    // recreate divs
     weatherContainerEl = document.createElement("div")
     fiveDayContainerEl = document.createElement("div")
     fiveDayContainerEl.setAttribute('id', 'five-day-container')
@@ -39,6 +44,7 @@ function getWeatherData(city) {
 
     var weatherUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&appid=" + apiKey;
 
+    // get coordinates from api
     fetch(weatherUrl)
         .then(function (response) {
             response.json().then(function (data) {
@@ -49,11 +55,11 @@ function getWeatherData(city) {
         .catch(function (error) {
             console.log(error);
         })
-
-
 }
 
+// function to get weather data
 function getForecastData(lat, lon) {
+    // using coordinates from last fetch, get weather data
     var fiveDayUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=metric&exclude=minutely,hourly,alerts&appid=" + apiKey
     fetch(fiveDayUrl)
         .then(function (response) {
@@ -113,6 +119,7 @@ function displayMainCard() {
     currWeatherEl.append(currUVI)
 }
 
+// function to display 5 day forecast
 function display5day() {
     for (var i = 1; i < 6; i++) {        
         var date = moment().add(i,'days');
@@ -146,6 +153,7 @@ function display5day() {
     }
 }
 
+// function to dynamically create buttons based on localstorage
 function getSavedCities() {
     var keys = Object.keys(localStorage)
     var filtered = keys.filter((value, index, arr) => {
@@ -160,6 +168,7 @@ function getSavedCities() {
     }
 }
 
+// function to handle when city buttons are clicked
 function buttonClickHandler(event) {
     event.preventDefault();
 
