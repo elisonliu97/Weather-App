@@ -37,7 +37,7 @@ function getWeatherData(city) {
     resultContainerEl.append(weatherContainerEl)
     resultContainerEl.append(fiveDayContainerEl)
 
-    var weatherUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&appid=" + apiKey;
+    var weatherUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&appid=" + apiKey;
 
     fetch(weatherUrl)
         .then(function (response) {
