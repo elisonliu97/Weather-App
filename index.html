@@ -5,9 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"> -->
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"> -->
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
     <title>Weather App</title>
@@ -16,10 +13,10 @@
 <body>
     <!-- Weather App -->
     <header class="header">
-        <h1 class="title is-1"> Weather App</h1>
+        <h1> Weather App</h1>
     </header>
 
-    <main class="flex-row justify-space-between">
+    <main class="flex-row">
         <!-- Sidebar -->
         <div class="search-column">
 
@@ -42,17 +39,17 @@
             </div>
 
         </div>
-        
+
         <!-- Results Body -->
-        <div class="result-column" id = "result-container">
+        <div class="result-column" id="result-container">
             <h2 class="result-header">Showing Weather for: <span id="weather-search-term"></span></h2>
-            <div id="weather-container"></div>        
+            <div id="weather-container"></div>
             <div id="five-day-container"></div>
         </div>
 
     </main>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="script.js"></script>
 </body>
 
