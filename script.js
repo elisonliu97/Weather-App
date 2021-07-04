@@ -33,6 +33,7 @@ function getWeatherData(city) {
     fiveDayContainerEl.remove();
     weatherContainerEl = document.createElement("div")
     fiveDayContainerEl = document.createElement("div")
+    fiveDayContainerEl.setAttribute('id', 'five-day-container')
     resultContainerEl.append(weatherContainerEl)
     resultContainerEl.append(fiveDayContainerEl)
 
@@ -71,7 +72,7 @@ function getForecastData(lat, lon) {
 // CREATE CARDS
 function displayMainCard() {
     var uvi = currentData.uvi;
-    var currWeatherIcon = currentData.weather[0].icon + "@2x.png"
+    var currWeatherIcon = currentData.weather[0].icon + ".png"
     var currDate = today.format("MMM Do, YYYY")
 
     currWeatherEl = document.createElement('div');
@@ -79,6 +80,7 @@ function displayMainCard() {
     weatherContainerEl.append(currWeatherEl);
 
     var currHeader = document.createElement('h2')
+    currHeader.setAttribute("class","weather-header")
     currHeader.textContent = cityName + " | " + currDate
     currWeatherEl.append(currHeader)
 
@@ -114,14 +116,15 @@ function displayMainCard() {
 function display5day() {
     for (var i = 1; i < 6; i++) {        
         var date = moment().add(i,'days');
-        var dailyWeatherIcon = currentData.weather[0].icon + "@2x.png"
+        var dailyWeatherIcon = currentData.weather[0].icon + ".png"
 
         dailyWeatherEl = document.createElement('div');
-        dailyWeatherEl.setAttribute("class", "weather-card");
+        dailyWeatherEl.setAttribute("class", "fiveday-card");
         fiveDayContainerEl.append(dailyWeatherEl);
 
         var dailyHeader = document.createElement('h3');
         dailyHeader.textContent = date.format("MMM Do");
+        dailyHeader.setAttribute("class", "weather-header");
         dailyWeatherEl.append(dailyHeader);
 
         var dailyIcon = document.createElement('img')
@@ -145,11 +148,14 @@ function display5day() {
 
 function getSavedCities() {
     var keys = Object.keys(localStorage)
-    for (var i = 0; i < keys.length; i++) {
+    var filtered = keys.filter((value, index, arr) => {
+        return (value !== "")
+    })
+    for (var i = 0; i < filtered.length; i++) {
         var cityCard = document.createElement('button')
-        cityCard.textContent = keys[i]
+        cityCard.textContent = filtered[i]
         cityCard.setAttribute('class', 'btn')
-        cityCard.setAttribute('data-city', keys[i])
+        cityCard.setAttribute('data-city', filtered[i])
         cityButtonsEl.append(cityCard)
     }
 }
